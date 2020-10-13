@@ -49,7 +49,7 @@ RUN  setcap    cap_net_bind_service=+ep /usr/sbin/nginx \
 # This only works if nginx is started with CMD or ENTRYPOINT
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
-
+RUN chown -R 5000:0 /etc /var  
 USER www-data
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
